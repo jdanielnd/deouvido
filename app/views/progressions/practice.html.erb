@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+
+<audio id="player-<%= @progression.id %>" src="<%= @progression.audio.url %>"></audio>
+<button class="btn btn-primary" onclick="document.getElementById('player-<%= @progression.id %>').play()">Play</button>
+<%= link_to "Next", practice_path, class: "btn btn-primary" %>
+
+<hr>
+
+<% @progressions.each do |progression| %>
+  <p>
+    <% js_correct = "$('.alert-correct').show(); $('.alert-wrong').hide();" %>
+    <% js_wrong = "$('.alert-wrong').show(); $('.alert-correct').hide();" %>
+    <%= link_to progression.description, "", class: "answer", onclick: @progression == progression ? js_correct : js_wrong %>
+  </p>
+<% end %>
+
+<div class="alert-correct">
+  <hr>
+  <div class="alert alert-success alert-correct" role="alert">
+    <strong>Parabéns!</strong> Você acertou essa, passe para a <%= link_to "próxima", practice_path %>!
+  </div>
+</div>
+
+<div class="alert-wrong">
+  <hr>
+  <div class="alert alert-warning alert-wrong" role="alert">
+    <strong>Ops!</strong> Você errou essa, tente de novo!
+  </div>
+</div>
+
+<hr>

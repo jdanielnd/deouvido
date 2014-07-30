@@ -1,0 +1,29 @@
+<h1>Listing progressions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @progressions.each do |progression| %>
+      <tr>
+        <td><%= progression.description %></td>
+        <td><audio id="player-<%= progression.id %>" src="<%= progression.audio.url %>"></audio><button onclick="document.getElementById('player-<%= progression.id %>').play()">Play</button></td>
+        <td><%= link_to 'Show', progression %></td>
+        <td><%= link_to 'Edit', edit_progression_path(progression) %></td>
+        <td><%= link_to 'Destroy', progression, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Progression', new_progression_path %>

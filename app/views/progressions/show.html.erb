@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @progression.description %>
+</p>
+
+<p>
+  <audio id="player" src="<%= @progression.audio.url %>"></audio>
+  <div>
+    <button onclick="document.getElementById('player').play()">Play</button>
+  </div> 
+</p>
+
+<%= link_to 'Edit', edit_progression_path(@progression) %> |
+<%= link_to 'Back', progressions_path %>
