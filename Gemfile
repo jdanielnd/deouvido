@@ -50,3 +50,5 @@ gem 'aws-sdk', '~> 1.0'
 gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git', :branch => "bootstrap3"
+
+gem 'dotenv-rails', :groups => [:development, :test]

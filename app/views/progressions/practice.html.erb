@@ -2,18 +2,26 @@
 
 
 <audio id="player-<%= @progression.id %>" src="<%= @progression.audio.url %>"></audio>
-<button class="btn btn-primary" onclick="document.getElementById('player-<%= @progression.id %>').play()">Play</button>
-<%= link_to "Next", practice_path, class: "btn btn-primary" %>
+<button class="btn btn-primary" onclick="document.getElementById('player-<%= @progression.id %>').play()">Tocar</button>
+<%= link_to "Próxima", practice_path, class: "btn btn-primary" %>
 
 <hr>
-
-<% @progressions.each do |progression| %>
-  <p>
-    <% js_correct = "$('.alert-correct').show(); $('.alert-wrong').hide();" %>
-    <% js_wrong = "$('.alert-wrong').show(); $('.alert-correct').hide();" %>
-    <%= link_to progression.description, "", class: "answer", onclick: @progression == progression ? js_correct : js_wrong %>
-  </p>
-<% end %>
+<div class="row">
+  <div class="col-lg-6">
+    <p>Clique na progressão que você acabou de ouvir:</p>
+    <table class="table table-bordered table-striped">
+    <% @progressions.each do |progression| %>
+      <tr>
+        <td>
+          <% js_correct = "$('.alert-correct').show(); $('.alert-wrong').hide();" %>
+          <% js_wrong = "$('.alert-wrong').show(); $('.alert-correct').hide();" %>
+          <%= link_to progression.description, "", class: "answer", onclick: @progression == progression ? js_correct : js_wrong %>
+        </td>
+      </tr>
+    <% end %>
+    </table>
+  </div>
+</div>
 
 <div class="alert-correct">
   <hr>

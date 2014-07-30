@@ -1,4 +1,4 @@
 development:
   bucket: deouvido
-  access_key_id: AKIAJRRNZLWBHUNFXWDA
-  secret_access_key: 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
+  access_key_id: <%= ENV['AWS_KEY'] %>
+  secret_access_key: <%= ENV['AWS_SECRET'] %>
